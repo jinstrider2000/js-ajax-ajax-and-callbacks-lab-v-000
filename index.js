@@ -11,7 +11,7 @@ function searchRepositories() {
         <li>${repo.name}</li>
         <li>${repo.description}</li>
         <li><a href="${repo.html_url}">Repo Link</a></li>
-        <li><a href="#" onclick="getCommits(this);" data-owner="${repo.owner.login}" data-repository="${repo.name}">Show Commits</a></li>
+        <li><a href="#" onclick="showCommits(this);" data-owner="${repo.owner.login}" data-repository="${repo.name}">Show Commits</a></li>
       </ul>
       `.trim();
       $("#results").append(resultsList);
