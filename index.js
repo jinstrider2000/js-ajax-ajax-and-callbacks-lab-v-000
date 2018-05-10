@@ -26,14 +26,17 @@ function getCommits(link) {
   const owner = link.dataset.owner;
   const url = `https://api.github.com/repos/${owner}/${repo}/commits`
   $.get(url).done(function (data) {
+    $("#details")[0].innerHTML = "";
     data.forEach((result) => {
       const commitList = `
       <ul>
         <li>${result.sha}</li>
+        <li>${result.commit.message}</li>
         <li>${result.commit.author.name}</li>
         <li>${result.author.login}</li>
       </ul>
-      `
+      `.trim();
+      $("#details").append(commitList);
     })
   })
 }
