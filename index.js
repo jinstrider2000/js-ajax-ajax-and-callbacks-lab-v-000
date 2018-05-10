@@ -20,7 +20,7 @@ function searchRepositories() {
 }
 
 function displayError(error) {
-  $("#errors").append(`<p>Error, no repos found matching <em>${searchTerms}</em></p>`);
+  $("#errors").append(`<p>error, no repos found matching <em>${searchTerms}</em></p>`);
 }
 
 function getCommits(link) {
