@@ -22,10 +22,18 @@ function searchRepositories() {
 }
 
 function getCommits(link) {
-  const repoName = link.dataset.repository
-  const uri = rootURL + "/repos/" + el.dataset.username + "/" + repoName + "/commits"
-  const xhr = new XMLHttpRequest()
-  xhr.addEventListener("load", displayCommits)
-  xhr.open("GET", uri)
-  xhr.send()
+  const repo = link.dataset.repository;
+  const owner = link.dataset.owner;
+  const url = `https://api.github.com/repos/${owner}/${repo}/commits`
+  $.get(url).done(function (data) {
+    data.forEach((result) => {
+      const commitList = `
+      <ul>
+        <li>${result.sha}</li>
+        <li>${result.commit.author.name}</li>
+        <li>${result.author.login}</li>
+      </ul>
+      `
+    })
+  })
 }
